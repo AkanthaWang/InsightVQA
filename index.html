@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPower: Enabling Theory-of-Mind Reasoning in VLM-based Embodied Agents</title>
+    <title>InsightVQA: A Large-Scale Dataset for Hierarchical Visual Question Answering on Emotion Understanding and Cognitive Reasoning</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
@@ -56,12 +56,6 @@
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
                 <span class="gradient-text">InsightVQA</span>: a large-scale dataset for hierarchical visual question answering on emotion understanding and cognitive reasoning.
             </h1>
-            <div class="flex justify-center mb-6">
-                <span class="bg-green-100 text-green-800 border border-green-300 
-                             px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
-                    🎉 Accepted by CVPR 2026
-                </span>
-            </div>
         </div>
 
         <!-- Teaser Section (Updated) -->
@@ -69,16 +63,14 @@
             <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
                 <!-- Actual Image -->
                 <div class="w-full bg-slate-50 border-b border-gray-100 relative group overflow-hidden">
-                    <img src="insightvqa.png" alt="InsightVQA Overview Diagram" class="w-full h-auto">
+                    <img src="overview.png" alt="InsightVQA Overview Diagram" class="w-full h-auto">
                 </div>
                 
                 <!-- Updated Caption -->
                 <div class="p-6 md:p-8 bg-white">
                     <p class="text-gray-700 text-justify text-sm md:text-base leading-relaxed">
-                        <span class="font-bold text-slate-900">Figure 1: InsightVQA Benchmark Overview.</span> 
-                        We evaluate Robot-Centric ToM through two tasks: <span class="font-bold text-slate-800">False-Belief Correction</span> and <span class="font-bold text-slate-800">Implicit Goal Inference & Completion</span>, assessing whether VLM-based embodied agents can generate correct decisions and actions.
-                        We further propose the <span class="font-bold text-slate-800">InsightVQA Reasoning Hierarchy</span>, comprising three levels and six layers.
-                        Existing VLMs perform poorly across layers, especially in action reasoning, while our model shows substantial improvements.
+                        <span class="font-bold text-slate-900">Figure 1: Overview of InsightVQA.</span> 
+                        The proposed task decomposes multimodal emotional reasoning into three stages: Perception for recognizing emotion and valence, Understanding for grounding emotional triggers and Cognition for predicting response intent and performing sequential insight reasoning.
                     </p>
                 </div>
             </div>
@@ -88,7 +80,7 @@
         <section id="abstract" class="mb-16 max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold mb-6 text-slate-900 border-l-4 border-blue-600 pl-4">Abstract</h2>
             <p class="text-lg text-gray-700 leading-loose text-justify serif">
-                Visual emotion understanding requires models not only to recognize emotional states, but also to why they arise and perform higher-level cognitive reasoning. However, existing benchmarks mainly focus on emotion recognition, offering limited support for grounded understanding and response-oriented analysis. To address this gap, we introduce \textbf{InsightVQA}, a large-scale dataset for hierarchical visual question answering on emotion understanding and cognitive reasoning. Building from 351K images collected from six public sources, we apply a rigorous multi-stage filtering pipeline to curate 138K high-confidence images. Each image is annotated at three hierarchical levels: perception QA for emotion and valence recognition, grounded understanding QA constructed from visual trigger extraction through constraint-guided generation, and cognition QA centered on response intent prediction and sequential insight reasoning. In total, InsightVQA contains 725K QA pairs. We further present \textbf{InsightVQA-Bench}, a high-quality evaluation benchmark comprising 30K samples for fine-grained evaluation. To support evaluation, we introduce \textbf{InsightNet}, an emotion-tuned baseline for MLLMs. Results demonstrate that InsightVQA poses significant challenges for grounded emotion understanding and reasoning.
+                Visual emotion understanding requires models not only to recognize emotional states, but also to why they arise and perform higher-level cognitive reasoning. However, existing benchmarks mainly focus on emotion recognition, offering limited support for grounded understanding and response-oriented analysis. To address this gap, we introduce InsightVQA, a large-scale dataset for hierarchical visual question answering on emotion understanding and cognitive reasoning. Building from 351K images collected from six public sources, we apply a rigorous multi-stage filtering pipeline to curate 138K high-confidence images. Each image is annotated at three hierarchical levels: perception QA for emotion and valence recognition, grounded understanding QA constructed from visual trigger extraction through constraint-guided generation, and cognition QA centered on response intent prediction and sequential insight reasoning. In total, InsightVQA contains 725K QA pairs. We further present InsightVQA-Bench, a high-quality evaluation benchmark comprising 30K samples for fine-grained evaluation. To support evaluation, we introduce InsightNet, an emotion-tuned baseline for MLLMs. Results demonstrate that InsightVQA poses significant challenges for grounded emotion understanding and reasoning.
             </p>
         </section>
     </main>
