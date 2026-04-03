@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsightVQA: A Large-Scale Dataset for Hierarchical Visual Question Answering on Emotion Understanding and Cognitive Reasoning</title>
+    <title>InsightVQA: High-Dimensional Emotion-Cognitive Visual Question Answering Benchmark</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
@@ -12,28 +12,83 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-1: #f7faf7;
+            --bg-2: #e8f0ea;
+            --ink: #1e293b;
+            --muted: #475569;
+            --brand-1: #0f766e;
+            --brand-2: #0369a1;
+            --card: #ffffff;
+            --line: #d7e0d9;
+            --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+        }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Manrope', sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(1200px 500px at 20% -10%, rgba(15, 118, 110, 0.12), transparent 65%),
+                radial-gradient(1000px 520px at 100% 0%, rgba(3, 105, 161, 0.1), transparent 68%),
+                linear-gradient(180deg, var(--bg-1), var(--bg-2));
             scroll-behavior: smooth;
+            min-height: 100vh;
         }
         .serif {
-            font-family: 'Noto Serif', serif;
+            font-family: 'Source Serif 4', serif;
         }
-        /* Custom gradient text for the title */
+        .hero-glow {
+            position: relative;
+            isolation: isolate;
+        }
+        .hero-glow::before {
+            content: '';
+            position: absolute;
+            inset: -12px -24px;
+            border-radius: 24px;
+            background: linear-gradient(120deg, rgba(15, 118, 110, 0.18), rgba(3, 105, 161, 0.12));
+            filter: blur(24px);
+            z-index: -1;
+            opacity: 0.7;
+        }
         .gradient-text {
-            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            background: linear-gradient(92deg, var(--brand-1), var(--brand-2));
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Hover effect for figures */
+        .glass-card {
+            background: color-mix(in srgb, var(--card) 92%, #f4faf7 8%);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+        .reveal {
+            animation: riseIn 650ms ease-out both;
+        }
+        .reveal-delay-1 {
+            animation-delay: 120ms;
+        }
+        .reveal-delay-2 {
+            animation-delay: 220ms;
+        }
         .zoom-hover {
-            transition: transform 0.3s ease;
+            transition: transform 300ms ease, filter 300ms ease;
         }
         .zoom-hover:hover {
-            transform: scale(1.01);
+            transform: scale(1.012);
+            filter: saturate(1.03);
+        }
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* Small table text adjustment */
         .table-xs th, .table-xs td {
@@ -46,30 +101,63 @@
                 padding: 0.75rem 0.5rem;
             }
         }
+        @media (max-width: 640px) {
+            .hero-glow::before {
+                inset: -8px -10px;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<body>
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
 
         <!-- Header Section -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
-                <span class="gradient-text">InsightVQA</span>: a large-scale dataset for hierarchical visual question answering on emotion understanding and cognitive reasoning.
+        <div class="text-center mb-12 reveal">
+            <!-- <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 text-xs font-semibold tracking-wide uppercase" style="background: rgba(15,118,110,0.12); color: #115e59; border: 1px solid rgba(15,118,110,0.2);">
+                <i class="fa-solid fa-brain"></i>
+                High-Dimensional Emotion-Cognitive Visual Question Answering Benchmark
+            </div> -->
+            <h1 class="text-3xl md:text-4xl lg:text-[2.8rem] font-extrabold tracking-tight mb-6 hero-glow leading-tight md:leading-[1.06] max-w-5xl mx-auto">
+                <span class="md:hidden"><span class="gradient-text">InsightVQA</span>: High-Dimensional Emotion-Cognitive Visual Question Answering Benchmark</span>
+                <span class="hidden md:block whitespace-nowrap"><span class="gradient-text">InsightVQA</span>: High-Dimensional Emotion-Cognitive </span>
+                <span class="hidden md:block whitespace-nowrap -mt-1">Visual Question Answering Benchmark</span>
             </h1>
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-5">
+                <a href="https://arxiv.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white transition" style="background: linear-gradient(92deg, #0f766e, #0369a1);">
+                    <i class="ai ai-arxiv"></i>
+                    arXiv
+                </a>
+                <a href="#" class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border text-slate-700 bg-white/80 transition hover:bg-white" style="border-color: #cbd5e1;">
+                    <i class="fa-solid fa-database"></i>
+                    Dataset
+                </a>
+                <a href="#" class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border text-slate-700 bg-white/80 transition hover:bg-white" style="border-color: #cbd5e1;">
+                    <i class="fa-brands fa-github"></i>
+                    Code
+                </a>
+            </div>
+            <p class="text-sm md:text-base text-slate-700 font-medium max-w-4xl mx-auto leading-relaxed">
+                Shiyu Wang, Ziyu Liu, Chaoyi Yu, Yujie Yin, Zhongqian Mao, Jing Chen, Jiaqi Song, Yunshi Lan, Yan Wang
+            </p>
+            <p class="text-sm text-slate-500 mt-2">
+                East China Normal University
+            </p>
         </div>
 
         <!-- Teaser Section (Updated) -->
-        <section class="mb-16">
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+        <section class="mb-16 reveal reveal-delay-1">
+            <div class="glass-card rounded-2xl overflow-hidden">
                 <!-- Actual Image -->
-                <div class="w-full bg-slate-50 border-b border-gray-100 relative group overflow-hidden">
-                    <img src="overview.png" alt="InsightVQA Overview Diagram" class="w-full h-auto">
+                <div class="w-full bg-slate-50 border-b border-gray-100 p-3 md:p-4">
+                    <div class="relative group overflow-hidden rounded-xl">
+                        <img src="Fig/Overview.png" alt="InsightVQA Overview Diagram" class="w-full h-auto zoom-hover">
+                    </div>
                 </div>
                 
                 <!-- Updated Caption -->
                 <div class="p-6 md:p-8 bg-white">
-                    <p class="text-gray-700 text-justify text-sm md:text-base leading-relaxed">
-                        <span class="font-bold text-slate-900">Figure 1: Overview of InsightVQA.</span> 
+                    <p class="text-slate-600 text-justify text-sm md:text-base leading-relaxed">
+                        <span class="font-bold text-slate-900">Figure 1: Overview of InsightVQA.</span>
                         The proposed task decomposes multimodal emotional reasoning into three stages: Perception for recognizing emotion and valence, Understanding for grounding emotional triggers and Cognition for predicting response intent and performing sequential insight reasoning.
                     </p>
                 </div>
@@ -77,11 +165,169 @@
         </section>
 
         <!-- Abstract Section -->
-        <section id="abstract" class="mb-16 max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-6 text-slate-900 border-l-4 border-blue-600 pl-4">Abstract</h2>
-            <p class="text-lg text-gray-700 leading-loose text-justify serif">
+        <section id="abstract" class="mb-16 max-w-4xl mx-auto reveal reveal-delay-2">
+            <div class="glass-card rounded-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-5 text-slate-900 border-l-4 pl-4" style="border-color: #0f766e;">Abstract</h2>
+                <p class="text-lg text-slate-700 leading-loose text-justify serif">
                 Visual emotion understanding requires models not only to recognize emotional states, but also to why they arise and perform higher-level cognitive reasoning. However, existing benchmarks mainly focus on emotion recognition, offering limited support for grounded understanding and response-oriented analysis. To address this gap, we introduce InsightVQA, a large-scale dataset for hierarchical visual question answering on emotion understanding and cognitive reasoning. Building from 351K images collected from six public sources, we apply a rigorous multi-stage filtering pipeline to curate 138K high-confidence images. Each image is annotated at three hierarchical levels: perception QA for emotion and valence recognition, grounded understanding QA constructed from visual trigger extraction through constraint-guided generation, and cognition QA centered on response intent prediction and sequential insight reasoning. In total, InsightVQA contains 725K QA pairs. We further present InsightVQA-Bench, a high-quality evaluation benchmark comprising 30K samples for fine-grained evaluation. To support evaluation, we introduce InsightNet, an emotion-tuned baseline for MLLMs. Results demonstrate that InsightVQA poses significant challenges for grounded emotion understanding and reasoning.
-            </p>
+                </p>
+            </div>
+        </section>
+
+        <!-- Dataset Pipeline Section -->
+        <section id="dataset-pipeline" class="mb-16 reveal">
+            <div class="glass-card rounded-2xl overflow-hidden">
+                <div class="p-6 md:p-8 border-b border-gray-100">
+                    <h2 class="text-3xl font-bold text-slate-900 border-l-4 pl-4" style="border-color: #0f766e;">InsightVQA Dataset Pipeline</h2>
+                </div>
+                <div class="w-full bg-slate-50 border-b border-gray-100 p-3 md:p-4">
+                    <div class="relative group overflow-hidden rounded-xl">
+                        <img src="Fig/DatasetPipeline.png" alt="InsightVQA Dataset Pipeline" class="w-full h-auto zoom-hover">
+                    </div>
+                </div>
+                <div class="p-6 md:p-8 bg-white">
+                    <p class="text-slate-600 text-justify text-sm md:text-base leading-relaxed">
+                        <span class="font-bold text-slate-900">Figure 2: InsightVQA dataset construction pipeline.</span>
+                        The pipeline comprises three stages: (A1) Image collection and emotion classification from 351K images across six public sources, producing 138K balanced samples; (A2) Perception annotation via template-based QA generation, yielding 276K label and valence QA pairs; (B) Grounded understanding annotation using VLM-extracted visual triggers and LLM-based QA generation, producing 330K visual, contextual, and counterfactual QA pairs. (C) Cognition annotation generates 119K intent and insight QA pairs via structured prompts and human curated samples, with quality controlled by rule filtering and VLM checking throughout. The final InsightVQA dataset comprises 138K images and 725K QA pairs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methods Section -->
+        <section id="methods" class="mb-16 reveal">
+            <div class="glass-card rounded-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-6 text-slate-900 border-l-4 pl-4" style="border-color: #0f766e;">Methods: InsightNet</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+                    <div class="bg-slate-50 border border-gray-100 p-3 md:p-4 rounded-xl">
+                        <div class="relative group overflow-hidden rounded-xl">
+                            <img src="Fig/Framework.png" alt="InsightVQA Method Framework" class="w-full h-auto zoom-hover">
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-slate-600 text-justify text-sm md:text-base leading-relaxed mb-4">
+                           Built upon the InsightVQA dataset, we propose InsightNet, a unified architecture for human state understanding. To instill foundational reasoning capabilities, we perform LoRA-based fine-tuning on InsightVQA, enabling the model to capture hierarchical perception, comprehension, and cognition for high-dimensional cognitive–affective representations.
+                        </p>
+                        <p class="text-slate-600 text-justify text-sm md:text-base leading-relaxed mb-4">
+                            To enhance both cognitive depth and generalization in complex emotional scenarios, we further apply instruction-driven supervised fine-tuning (SFT) on Qwen2.5-VL-7B using the InsightVQA dataset.
+                            As full-parameter fine-tuning is prone to overfitting on emotionally biased data, we adopt LoRA as an implicit regularization mechanism, reducing trainable parameters via low-rank decomposition.
+                        </p>
+                        <p class="text-slate-600 text-justify text-sm md:text-base leading-relaxed">
+                            <!-- During evaluation, we report stage-wise metrics and aggregate scores, enabling detailed analysis of low-level perception accuracy, grounded understanding quality, and high-level cognitive robustness. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiments Section -->
+        <section id="experiments" class="mb-16 reveal">
+            <div class="glass-card rounded-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-5 text-slate-900 border-l-4 pl-4" style="border-color: #0f766e;">Experiments</h2>
+                <p class="text-slate-600 text-sm md:text-base mb-4">
+                    Comparison of model performance across Perception, Understanding, and Cognition tasks.
+                </p>
+
+                <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+                    <table class="min-w-[980px] w-full table-xs text-slate-700 border-collapse">
+                        <thead class="bg-slate-50 text-slate-900">
+                            <tr>
+                                <th rowspan="2" class="text-left font-bold border-b border-slate-200">Model</th>
+                                <th rowspan="2" class="text-left font-bold border-b border-slate-200">Year</th>
+                                <th colspan="1" class="text-center font-bold border-b border-slate-200">Perception</th>
+                                <th colspan="3" class="text-center font-bold border-b border-slate-200">Understanding</th>
+                                <th colspan="3" class="text-center font-bold border-b border-slate-200">Cognition</th>
+                            </tr>
+                            <tr>
+                                <th class="text-center font-semibold border-b border-slate-200">ACC</th>
+                                <th class="text-center font-semibold border-b border-slate-200">F1</th>
+                                <th class="text-center font-semibold border-b border-slate-200">Precision</th>
+                                <th class="text-center font-semibold border-b border-slate-200">Recall</th>
+                                <th class="text-center font-semibold border-b border-slate-200">Ranking</th>
+                                <th class="text-center font-semibold border-b border-slate-200">Top-1</th>
+                                <th class="text-center font-semibold border-b border-slate-200">ACC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-slate-100">
+                                <td colspan="9" class="font-bold text-slate-800">Open-source MLLMs</td>
+                            </tr>
+                            <tr>
+                                <td>Qwen2.5-VL-7B</td><td>2025</td><td class="text-center">57.95</td><td class="text-center">88.24</td><td class="text-center">87.74</td><td class="text-center">88.80</td><td class="text-center">34.95</td><td class="text-center">51.27</td><td class="text-center">30.92</td>
+                            </tr>
+                            <tr>
+                                <td>LLaVA-OneVision-1.5-8B</td><td>2025</td><td class="text-center">56.74</td><td class="text-center">87.81</td><td class="text-center">88.60</td><td class="text-center">87.07</td><td class="text-center">60.84</td><td class="text-center">67.50</td><td class="text-center">45.97</td>
+                            </tr>
+                            <tr>
+                                <td>InternVL3.5-8B</td><td>2025</td><td class="text-center">53.40</td><td class="text-center">88.54</td><td class="text-center">88.53</td><td class="text-center">88.60</td><td class="text-center">31.81</td><td class="text-center">43.44</td><td class="text-center">31.18</td>
+                            </tr>
+                            <tr>
+                                <td>Deepseek-VL-7B-chat</td><td>2024</td><td class="text-center">52.54</td><td class="text-center">87.25</td><td class="text-center">88.42</td><td class="text-center">86.12</td><td class="text-center">40.52</td><td class="text-center">43.48</td><td class="text-center">38.07</td>
+                            </tr>
+                            <tr>
+                                <td>Qwen2.5-VL-32B</td><td>2025</td><td class="text-center">52.80</td><td class="text-center">88.04</td><td class="text-center">87.90</td><td class="text-center">88.19</td><td class="text-center">69.24</td><td class="text-center">65.32</td><td class="text-center">44.02</td>
+                            </tr>
+                            <tr>
+                                <td>Qwen2.5-VL-72B</td><td>2025</td><td class="text-center">53.83</td><td class="text-center">88.86</td><td class="text-center">88.13</td><td class="text-center">89.62</td><td class="text-center">76.30</td><td class="text-center">56.83</td><td class="text-center">57.24</td>
+                            </tr>
+
+                            <tr class="bg-slate-100">
+                                <td colspan="9" class="font-bold text-slate-800">Close-source MLLMs</td>
+                            </tr>
+                            <tr>
+                                <td>Qwen3-Max</td><td>2026</td><td class="text-center">52.64</td><td class="text-center">87.73</td><td class="text-center">86.96</td><td class="text-center">88.53</td><td class="text-center">75.65</td><td class="text-center">61.14</td><td class="text-center">42.51</td>
+                            </tr>
+                            <tr>
+                                <td>Deepseek-V3.2</td><td>2025</td><td class="text-center">51.20</td><td class="text-center">87.86</td><td class="text-center">87.23</td><td class="text-center">88.53</td><td class="text-center">80.24</td><td class="text-center">65.77</td><td class="text-center">41.60</td>
+                            </tr>
+                            <tr>
+                                <td>GPT-4o</td><td>2024</td><td class="text-center">50.63</td><td class="text-center">88.34</td><td class="text-center">88.49</td><td class="text-center">88.24</td><td class="text-center">77.51</td><td class="text-center">61.06</td><td class="text-center">50.34</td>
+                            </tr>
+                            <tr>
+                                <td>Gemini-2.5-flash</td><td>2025</td><td class="text-center">56.83</td><td class="text-center">89.05</td><td class="text-center">88.02</td><td class="text-center">90.13</td><td class="text-center">80.56</td><td class="text-center">63.51</td><td class="text-center">56.08</td>
+                            </tr>
+                            <tr>
+                                <td>Claude-3.7-sonnet</td><td>2026</td><td class="text-center">56.37</td><td class="text-center">88.72</td><td class="text-center">89.16</td><td class="text-center">88.31</td><td class="text-center">81.77</td><td class="text-center">63.49</td><td class="text-center">61.87</td>
+                            </tr>
+
+                            <tr class="bg-slate-100">
+                                <td colspan="9" class="font-bold text-slate-800">Emotion-Oriented MLLMs</td>
+                            </tr>
+                            <tr>
+                                <td>EmoViT</td><td>2024</td><td class="text-center">53.69</td><td class="text-center">84.50</td><td class="text-center">84.85</td><td class="text-center">84.19</td><td class="text-center">-</td><td class="text-center">12.53</td><td class="text-center">42.86</td>
+                            </tr>
+                            <tr>
+                                <td>Emotion-Qwen</td><td>2025</td><td class="text-center">52.98</td><td class="text-center">86.92</td><td class="text-center">86.37</td><td class="text-center">87.48</td><td class="text-center">-</td><td class="text-center">33.61</td><td class="text-center">30.18</td>
+                            </tr>
+                            <tr>
+                                <td>EmoCaliber</td><td>2025</td><td class="text-center">40.29</td><td class="text-center">84.23</td><td class="text-center">81.52</td><td class="text-center">87.18</td><td class="text-center">-</td><td class="text-center">25.47</td><td class="text-center">27.92</td>
+                            </tr>
+                            <tr class="bg-cyan-50 font-semibold">
+                                <td>InsightNet (Ours)</td><td>2026</td><td class="text-center">76.25</td><td class="text-center">90.56</td><td class="text-center">90.50</td><td class="text-center">90.63</td><td class="text-center">82.79</td><td class="text-center">71.21</td><td class="text-center">69.18</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs md:text-sm text-slate-500 mt-3">
+                    "-" indicates that the model is not applicable to the evaluation.
+                </p>
+            </div>
+        </section>
+
+        <!-- BibTeX Section -->
+        <section id="bibtex" class="mb-16 max-w-4xl mx-auto reveal">
+            <div class="glass-card rounded-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-5 text-slate-900 border-l-4 pl-4" style="border-color: #0f766e;">BibTeX</h2>
+                <p class="text-slate-600 text-sm md:text-base mb-4">
+                    If you find InsightVQA useful in your research, please consider citing:
+                </p>
+                <pre class="bg-slate-900 text-slate-100 rounded-xl p-4 md:p-5 text-xs md:text-sm overflow-x-auto leading-relaxed"><code>@article{wang2026insightvqa,
+    title   = {InsightVQA: High-Dimensional Emotion-Cognitive Visual Question Answering Benchmark},
+    author  = {Wang, Shiyu and Liu, Ziyu and Yu, Chaoyi and Yin, Yujie and Mao, Zhongqian and Chen, Jing and Song, Jiaqi and Lan, Yunshi and Wang, Yan},
+    journal = {arXiv preprint arXiv:XXXX.XXXXX},
+    year    = {2026}
+}</code></pre>
+            </div>
         </section>
     </main>
 </body>
