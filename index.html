@@ -165,12 +165,16 @@
         </section>
 
         <!-- Abstract Section -->
-        <section id="abstract" class="mb-16 max-w-4xl mx-auto reveal reveal-delay-2">
-            <div class="glass-card rounded-2xl p-6 md:p-8">
-                <h2 class="text-3xl font-bold mb-5 text-slate-900 border-l-4 pl-4" style="border-color: #0f766e;">Abstract</h2>
-                <p class="text-lg text-slate-700 leading-loose text-justify serif">
-                Visual emotion understanding requires models not only to recognize emotional states, but also to why they arise and perform higher-level cognitive reasoning. However, existing benchmarks mainly focus on emotion recognition, offering limited support for grounded understanding and response-oriented analysis. To address this gap, we introduce InsightVQA, a large-scale dataset for hierarchical visual question answering on emotion understanding and cognitive reasoning. Building from 351K images collected from six public sources, we apply a rigorous multi-stage filtering pipeline to curate 138K high-confidence images. Each image is annotated at three hierarchical levels: perception QA for emotion and valence recognition, grounded understanding QA constructed from visual trigger extraction through constraint-guided generation, and cognition QA centered on response intent prediction and sequential insight reasoning. In total, InsightVQA contains 725K QA pairs. We further present InsightVQA-Bench, a high-quality evaluation benchmark comprising 30K samples for fine-grained evaluation. To support evaluation, we introduce InsightNet, an emotion-tuned baseline for MLLMs. Results demonstrate that InsightVQA poses significant challenges for grounded emotion understanding and reasoning.
-                </p>
+        <section id="abstract" class="mb-16 reveal reveal-delay-2">
+            <div class="glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden">
+                <div class="absolute -top-20 -right-20 w-56 h-56 rounded-full" style="background: radial-gradient(circle, rgba(15,118,110,0.18), rgba(15,118,110,0));"></div>
+                <div class="relative">
+                    <h2 class="text-3xl font-bold mb-5 text-slate-900 border-l-4 pl-4" style="border-color: #0f766e;">Abstract</h2>
+                    <p class="text-[1.05rem] md:text-[1.1rem] text-slate-700 leading-[1.95] text-justify serif">
+                    Visual emotion understanding requires models not only to recognize emotional states, but also to why they arise and perform higher-level cognitive reasoning. However, existing benchmarks mainly focus on emotion recognition, offering limited support for grounded understanding and response-oriented analysis. To address this gap, we introduce InsightVQA, a large-scale dataset for hierarchical visual question answering on emotion understanding and cognitive reasoning. Building from 351K images collected from six public sources, we apply a rigorous multi-stage filtering pipeline to curate 138K high-confidence images. Each image is annotated at three hierarchical levels: perception QA for emotion and valence recognition, grounded understanding QA constructed from visual trigger extraction through constraint-guided generation, and cognition QA centered on response intent prediction and sequential insight reasoning.
+                    We further present InsightVQA-Bench, a high-quality evaluation benchmark comprising 30K samples for fine-grained evaluation. To support evaluation, we introduce InsightNet, an emotion-tuned baseline for MLLMs. Results demonstrate that InsightVQA poses significant challenges for grounded emotion understanding and reasoning.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -315,7 +319,7 @@
         </section>
 
         <!-- BibTeX Section -->
-        <section id="bibtex" class="mb-16 max-w-4xl mx-auto reveal">
+        <section id="bibtex" class="mb-16 reveal">
             <div class="glass-card rounded-2xl p-6 md:p-8">
                 <h2 class="text-3xl font-bold mb-5 text-slate-900 border-l-4 pl-4" style="border-color: #0f766e;">BibTeX</h2>
                 <p class="text-slate-600 text-sm md:text-base mb-4">
